@@ -25,6 +25,7 @@
                                             <th>Cliente</th>
                                             <th>Fecha de Emision</th>
                                             <th>Valor Total</th>
+                                            <th>Acción</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -34,7 +35,7 @@
                                             <td>{{ ord.Cliente }}</td>
                                             <td>{{ ord.Fecha_Emision }}</td>
                                             <td>{{ ord.Valor_Total }}</td>
-                                        
+                                            <td><a class ="btn btn-primary" href="{%url 'ModificarOrden' ord.ID_Compra%}">Modificar</a> <a class ="btn btn-danger" href="{%url 'EliminarOrden' ord.ID_Compra%}">Eliminar</a></td>
                                         </tr>
 
                                         {% endfor %}
@@ -44,6 +45,7 @@
                                             <th>Cliente</th>
                                             <th>Fecha de Emision</th>
                                             <th>Valor Total</th>
+                                            <th>Acción</th>
                                         </tr>
                                     </tfoot>
                                 </table>

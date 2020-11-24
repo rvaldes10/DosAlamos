@@ -25,6 +25,7 @@
                                             <th>RUT</th>
                                             <th>Nombre</th>
                                             <th>Dirección</th>
+                                            <th>Accion</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -34,9 +35,8 @@
                                             <td>{{ cli.Rut_Cliente }}</td>
                                             <td>{{ cli.Nombre_Completo }}</td>
                                             <td>{{ cli.Direccion }}</td>
-                                        
+                                            <td><a class ="btn btn-primary" href="{%url 'ModificarCliente' cli.ID_Cliente%}">Modificar</a> <a class ="btn btn-danger" href="{%url 'EliminarCliente' cli.ID_Cliente%}">Eliminar</a></td>
                                         </tr>
-
                                         {% endfor %}
                                     </tbody>
                                     <tfoot>
@@ -44,6 +44,7 @@
                                             <th>RUT</th>
                                             <th>Nombre</th>
                                             <th>Dirección</th>
+                                            <th>Accion</th>
                                         </tr>
                                     </tfoot>
                                 </table>

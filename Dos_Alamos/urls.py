@@ -14,8 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from app.views import indexOrden, login, recuperar_passwd, RegistroCliente, RegistrarOrden, RegistrarDespacho, ListarCliente, ListarOrden, ListarDespacho
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+from app.views import indexOrden, login, recuperar_passwd, RegistroCliente, RegistrarOrden, RegistrarDespacho, ListarCliente, ListarOrden, ListarDespacho, publico, modificar_despacho, modificar_orden, modificar_cliente, eliminar_cliente,eliminar_despacho,eliminar_orden
 
 
 urlpatterns = [
@@ -29,6 +31,11 @@ urlpatterns = [
     path('listadoclientes/', ListarCliente, name="ListadoClientes"),
     path('listadoordenes/', ListarOrden, name="ListadoOrdenes"),
     path('listadodespachos/', ListarDespacho, name="ListadoDespachos"),
-
-
+    path('publico/',publico,name="publico"),
+    path('modificar_despacho/<int:id>',modificar_despacho,name="ModificarDespacho"),
+    path('modificar_orden/<int:id>',modificar_orden,name="ModificarOrden"),
+    path('modificar_cliente/<int:id>',modificar_cliente,name="ModificarCliente"),
+    path('eliminar_cliente/<int:id>',eliminar_cliente,name="EliminarCliente"),
+    path('eliminar_orden/<int:id>',eliminar_orden,name="EliminarOrden"),
+    path('eliminar_despacho/<int:id>',eliminar_despacho,name="EliminarDespacho"),
 ]

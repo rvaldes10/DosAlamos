@@ -25,6 +25,7 @@
                                             <th>Cliente</th>
                                             <th>Orden de Compra</th>
                                             <th>Fecha de Entrega</th>
+                                            <th>Accion</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -34,7 +35,7 @@
                                             <td>{{ desp.Cliente }}</td>
                                             <td>{{ desp.Orden_Compra }}</td>
                                             <td>{{ desp.Fecha_Entrega }}</td>
-                                        
+                                            <td><a class ="btn btn-primary" href="{%url 'ModificarDespacho' desp.ID_Despacho%}">Modificar</a> <a class ="btn btn-danger" href="{%url 'EliminarDespacho' desp.ID_Despacho%}">Eliminar</a></td>
                                         </tr>
 
                                         {% endfor %}
@@ -44,6 +45,7 @@
                                             <th>Cliente</th>
                                             <th>Orden de Compra</th>
                                             <th>Fecha de Entrega</th>
+                                            <th>Accion</th>
                                         </tr>
                                     </tfoot>
                                 </table>

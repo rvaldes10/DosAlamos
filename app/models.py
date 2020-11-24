@@ -22,12 +22,21 @@ class Orden_Compra(models.Model):
 
     class Meta:
         db_table = "Orden_de_Compra"
+    
+    def __str__(self):
+        compra_str = str(self.ID_Compra)
+        return compra_str
 
 class Despacho(models.Model):
     ID_Despacho = models.AutoField(primary_key=True)
     Cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)
-    Orden_Compra = models.ForeignKey(Orden_Compra, on_delete=models.PROTECT)
+    Orden_Compra = models.ForeignKey(Orden_Compra, on_delete=models.PROTECT, unique=True)
     Fecha_Entrega = models.DateField()
 
     class Meta:
         db_table = "Despacho"
+    
+    def __str__(self):
+        despacho_str = str(self.ID_Despacho)
+        return despacho_str
+        

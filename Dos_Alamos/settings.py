@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,22 +27,27 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',
+    'app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app',
     'crispy_forms',
-
+    'colorfield',
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+X_FRAME_OPTIONS='SAMEORIGIN'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,7 +64,7 @@ ROOT_URLCONF = 'Dos_Alamos.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/realm/Desktop/New_DosAlamos/app/template'],
+        'DIRS': [os.path.join(BASE_DIR,"app/template/")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,9 +85,17 @@ WSGI_APPLICATION = 'Dos_Alamos.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': '127.0.0.1:1521/xe',
+        'USER': 'c##dosalamos',
+        'PASSWORD': 'dosalamos',
+        'TEST': {
+            'USER':'default_test',
+            'TBLSPACE':'default_test_tbls',
+            'TBLSPACE_TMP': 'default_test_tbls_tmp',
+
+        },
+    },
 }
 
 
@@ -123,4 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = ['C:/Users/realm/Desktop/New_DosAlamos/app/']
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,"app/static/app/img")
